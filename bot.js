@@ -76,5 +76,4 @@ app.post('/', (req, res)=>{
   }
   res.sendStatus(200);
 });
-
 app.listen(80, ()=> logger.info('App is listening on port 80'));
