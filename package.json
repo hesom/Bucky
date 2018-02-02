@@ -1,7 +1,7 @@
 {
-  "name": "bucky",
-  "version": "1.0.0",
-  "description": "Discord bot that posts updates from bitbucket",
+  "name": "Bucky",
+  "version": "0.1.0",
+  "description": "Discord bot that posts updates from Bitbucket",
   "main": "bot.js",
   "author": "Hendrik Sommerhoff",
   "dependencies": {
