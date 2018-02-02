@@ -1,5 +1,6 @@
 {
   "token": "YOUR_ACCESS_TOKEN",
   "channel": "CHANNEL_TO_POST_UPDATES",
-  "owner": "OWNER_ID"
+  "owner": "OWNER_ID",
+  "port": "80"
 }

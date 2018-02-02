@@ -53,13 +53,24 @@ app.post('/', (req, res)=>{
   var changes = json.push.changes;
 
   for(change of changes){
+    if(change.created && change.new.type == 'branch'){
+      var embed = new Discord.RichEmbed();
+      embed.setAuthor(actor, avatar, actorLink);
+      embed.setColor('#f4d641');
+      var branch = change.new;
+      var title = `[${repo}] New branch created: ${branch.name}`;
+      embed.setTitle(title);
+      channel.send({embed});
+    }
+
     if(!change.created && !change.closed){
       var embed = new Discord.RichEmbed();
       embed.setAuthor(actor, avatar, actorLink);
-      embed.setColor('#F00000');
+      embed.setColor('#42c5f4');
       var commits = change.commits;
       var changeLink = change.links.html.href;
-      var title =  `[${repo}] ${commits.length} new commit(s)`;
+      var branch = change.new;
+      var title =  `[${repo}/${branch.name}] ${commits.length} new commit(s)`;
       embed.setTitle(title);
       embed.setURL(changeLink);
       var description = "";
@@ -77,4 +88,4 @@ app.post('/', (req, res)=>{
   res.sendStatus(200);
 });
 
-app.listen(80, ()=> logger.info('App is listening on port 80'));
+app.listen(config.port, ()=> logger.info(`App is listening on port ${config.port}`));
