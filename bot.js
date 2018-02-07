@@ -62,7 +62,8 @@ app.post('/', (req, res)=>{
       var branch = change.new;
       var title = `[${repo}] New branch created: ${branch.name}`;
       embed.setTitle(title);
-      var description = formatter.buildCommitDescriptionString(change);
+      var description = "Last commits:\n";
+      description += formatter.buildCommitDescriptionString(change);
       embed.setDescription(description);
       channel.send({embed});
     }
