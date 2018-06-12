@@ -53,7 +53,7 @@ app.post('/', (req, res)=>{
   var actorLink = json.actor.links.html.href;
   var avatar = json.actor.links.avatar.href;
   var changes = json.push.changes;
-  var truncated = json.push.truncated;
+  var truncated = json.push.changes.truncated;
 
   for(change of changes){
     if(change.created && change.new.type == 'branch'){
