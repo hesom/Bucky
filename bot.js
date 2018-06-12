@@ -53,6 +53,7 @@ app.post('/', (req, res)=>{
   var actorLink = json.actor.links.html.href;
   var avatar = json.actor.links.avatar.href;
   var changes = json.push.changes;
+  var truncated = json.push.truncated;
 
   for(change of changes){
     if(change.created && change.new.type == 'branch'){
@@ -75,7 +76,11 @@ app.post('/', (req, res)=>{
       var commits = change.commits;
       var changeLink = change.links.html.href;
       var branch = change.new;
+      
       var title =  `[${repo}/${branch.name}] ${commits.length} new commit(s)`;
+      if(truncated){
+        title = `[${repo}/${branch.name}] with more than 5 new commits`;
+      }
       embed.setTitle(title);
       embed.setURL(changeLink);
       var description = formatter.buildCommitDescriptionString(change);
